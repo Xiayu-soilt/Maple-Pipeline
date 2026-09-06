@@ -114,16 +114,3 @@ maple-pipeline/
         └── api.js           # REST / SSE / WebSocket 封装（自动附带 JWT）
 ```
 
-## 技术亮点（面试可讲）
-
-- **认证架构**：用户库（MySQL）与业务库（SQLite）分离的双数据源设计；bcrypt 成本因子哈希防彩虹表；JWT 24h 过期 + 前端路由守卫；WS 握手走 query token（浏览器 WS 不支持 Authorization header 的工程细节）
-- **自研 DAG 调度器**：Kahn 算法拓扑分层，asyncio.gather 同层并行；失败传播用后代闭包计算阻断集合
-- **门禁口径设计**：通过率 = passed/(passed+failed)，与 skipped 解耦，避免「跳过用例拉低通过率」的口径事故
-- **实时日志双通道**：WebSocket 推送为主（内存 buffer + JSONL 落盘支持回放），REST 轮询兜底，前端按事件指纹去重
-- **AI 工程化**：DeepSeek OpenAI 兼容接口，SSE 流式打字机输出，json_mode 结构化生成 DAG 并做 schema 兜底解析
-- **真实检出链路**：git clone 真实执行（失败自动探测本地代理端口重试）、zip 解压做路径穿越（Zip Slip）防护
-- **演示环境执行器**：高仿真模拟执行（pytest/bandit/docker/kubectl 风格日志），真实环境可平滑替换为 subprocess 执行 command
-
-## License
-
-MIT
