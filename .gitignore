@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 密钥配置（含 DeepSeek API Key / MySQL 密码 / JWT Secret，严禁提交）
+backend/.env
+
+# 数据库与运行时数据
+backend/*.db
+backend/uploads/
+backend/artifacts/
+
+# Node
+node_modules/
+frontend/dist/
+
+# IDE / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
